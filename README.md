@@ -6,7 +6,7 @@ Preboot 2 is a collection of LESS mixins and variables for quickly writing CSS. 
 
 Sassy Preboot requires [Sass](http://sass-lang.com/).
 
-### Notes from the [Preboot 2 readme](https://github.com/mdo/preboot)
+### Notes from the [Preboot 2 readme](https://github.com/mdo/preboot):
 
 ## Getting started
 
