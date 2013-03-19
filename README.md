@@ -1,12 +1,10 @@
 # Sassy Preboot
 
-**!A work in progress!**
-
 **A Sass port of [Mark Otto's](https://github.com/mdo) awesome [Preboot 2](http://getpreboot.com)**
 
 > Preboot 2 is a collection of LESS mixins and variables for quickly writing CSS. As the precursor to [Bootstrap](http://getbootstrap.com), it serves as a lightweight and interface agnostic approach to jumpstarting your next web project. Use it how you see fit.
 
-Sassy Preboot requires [Sass](http://sass-lang.com/).
+Sassy Preboot was modified for Sass by [@beaucharman](http://twitter.com/beaucharman), and requires [Sass](http://sass-lang.com/).
 
 ### Notes from the [Preboot 2 readme](https://github.com/mdo/preboot):
 
