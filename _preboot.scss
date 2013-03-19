@@ -13,15 +13,15 @@
 // --------------------------------------------------
 
 // Grayscale
-$black-10:                 darken(#fff, 10%);
-$black-20:                 darken(#fff, 20%);
-$black-30:                 darken(#fff, 30%);
-$black-40:                 darken(#fff, 40%);
-$black-50:                 darken(#fff, 50%);
-$black-60:                 darken(#fff, 60%);
-$black-70:                 darken(#fff, 70%);
-$black-80:                 darken(#fff, 80%);
-$black-90:                 darken(#fff, 90%);
+$black-10:                darken(#fff, 10%);
+$black-20:                darken(#fff, 20%);
+$black-30:                darken(#fff, 30%);
+$black-40:                darken(#fff, 40%);
+$black-50:                darken(#fff, 50%);
+$black-60:                darken(#fff, 60%);
+$black-70:                darken(#fff, 70%);
+$black-80:                darken(#fff, 80%);
+$black-90:                darken(#fff, 90%);
 
 // Brand colors
 $brand-primary:           #428bca;
@@ -73,7 +73,7 @@ $grid-float-breakpoint:   768px;
   margin-left: -@grid-column-padding;
   margin-right: -@grid-column-padding;
   // Then clear the floated columns
-  .clearfix();
+  @include clearfix;
 }
 .make-column(@columns) {
   @media (min-width: @grid-float-breakpoint) {
@@ -87,7 +87,7 @@ $grid-float-breakpoint:   768px;
   padding-left: @grid-column-padding;
   padding-right: @grid-column-padding;
   // Proper box-model (padding doesn't add to width)
-  .box-sizing(border-box);
+  @include box-sizing(border-box);
 }
 .make-column-offset(@columns) {
   @media (min-width: @grid-float-breakpoint) {
@@ -125,9 +125,9 @@ $grid-float-breakpoint:   768px;
 }
 
 // Drop shadows
-@mixin box-shadow(@shadow) {
-  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
-          box-shadow: @shadow;
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+          box-shadow: $shadow;
 }
 
 // Transitions
@@ -172,7 +172,7 @@ $grid-float-breakpoint:   768px;
        -o-transform: translate($x, $y);
           transform: translate($x, $y);
 }
-@mixin skew(@$x, $y) {
+@mixin skew($x, $y) {
   -webkit-transform: skew($x, $y);
      -moz-transform: skew($x, $y);
       -ms-transform: skewX($x) skewY($y); // See https://github.com/twitter/bootstrap/issues/4885
@@ -218,39 +218,39 @@ $grid-float-breakpoint:   768px;
 
 // Placeholder text
 @mixin placeholder($color: $input-color-placeholder) {
-  &:-moz-placeholder            { color: $color; } // Firefox 4-18
-  &::-moz-placeholder           { color: $color; } // Firefox 19+
-  &:-ms-input-placeholder       { color: $color; } // Internet Explorer 10+
-  &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+  :-moz-placeholder            { color: $color; } // Firefox 4-18
+  ::-moz-placeholder           { color: $color; } // Firefox 19+
+  :-ms-input-placeholder       { color: $color; } // Internet Explorer 10+
+  ::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
 }
 
 // Resize anything
-@mixin resizable(@direction) {
-  resize: @direction; // Options: horizontal, vertical, both
+@mixin resizable($direction) {
+  resize: $direction; // Options: horizontal, vertical, both
   overflow: auto; // Safari fix
 }
 
 // CSS3 Content Columns
-@mixin content-columns(@width, @count, @gap) {
-  -webkit-column-width: @width;
-     -moz-column-width: @width;
-          column-width: @width;
-  -webkit-column-count: @count;
-     -moz-column-count: @count;
-          column-count: @count;
-  -webkit-column-gap: @gap;
-     -moz-column-gap: @gap;
-          column-gap: @gap;
+@mixin content-columns($width, $count, $gap) {
+  -webkit-column-width: $width;
+     -moz-column-width: $width;
+          column-width: $width;
+  -webkit-column-count: $count;
+     -moz-column-count: $count;
+          column-count: $count;
+  -webkit-column-gap: $gap;
+     -moz-column-gap: $gap;
+          column-gap: $gap;
 }
 
 // Optional hyphenation
-@mixin hyphens(@mode: auto) {
+@mixin hyphens($mode: auto) {
   word-wrap: break-word;
-  -webkit-hyphens: @mode;
-     -moz-hyphens: @mode;
-      -ms-hyphens: @mode;
-       -o-hyphens: @mode;
-          hyphens: @mode;
+  -webkit-hyphens: $mode;
+     -moz-hyphens: $mode;
+      -ms-hyphens: $mode;
+       -o-hyphens: $mode;
+          hyphens: $mode;
 }
 
 // Gradients
@@ -343,7 +343,7 @@ $grid-float-breakpoint:   768px;
 //    that are clearfixed.
 // 2. The use of `table` rather than `block` is only necessary if using
 //    `:before` to contain the top-margins of child elements.
-@mixin clearfix() {
+@mixin clearfix {
   &:before,
   &:after {
     content: " "; // 1
@@ -355,25 +355,25 @@ $grid-float-breakpoint:   768px;
 }
 
 // Center-align a block level element
-@mixin center-block() {
+@mixin center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 // Sizing shortcuts
-@mixin size(@width, @height) {
-  width: @width;
-  height: @height;
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
 }
-@mixin square(@size) {
-  @mixin size(@size, @size);
+@mixin square($size) {
+  @include size($size, $size);
 }
 
 // Text overflow
 //
 // Requires inline-block or block for proper styling
-@mixin text-truncate() {
+@mixin text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -382,8 +382,8 @@ $grid-float-breakpoint:   768px;
 // Retina images
 //
 // Retina background-image support with non-retina fall back
-@mixin retina-image(@file-1x, @file-2x, @width-1x, @height-1x) {
-  background-image: url("@{file-1x}");
+@mixin retina-image($file-1x, $file-2x, $width-1x, $height-1x) {
+  background-image: url("#{file-1x}");
 
   @media
   only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -392,7 +392,7 @@ $grid-float-breakpoint:   768px;
   only screen and (        min-device-pixel-ratio: 2),
   only screen and (                min-resolution: 192dpi),
   only screen and (                min-resolution: 2dppx) {
-    background-image: url("@{file-2x}");
-    background-size: @width-1x @height-1x;
+    background-image: url("#{file-2x}");
+    background-size: $width-1x $height-1x;
   }
 }
